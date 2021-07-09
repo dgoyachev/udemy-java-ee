@@ -21,15 +21,17 @@ public class TodoRest {
     @Path("new")
     @POST
     public Response createTodo(Todo todo){
-        todoService.createTodo(todo);
-        return Response.ok(todo).build();
+        return Response.ok(
+                todoService.createTodo(todo)
+        ).build();
     }
 
     @Path("update")
     @PUT
     public Response updateTodo(Todo todo){
-        todoService.updateTodo(todo);
-        return Response.ok(todo).build();
+        return Response.ok(
+                todoService.updateTodo(todo)
+        ).build();
     }
 
     @Path("{id}")
