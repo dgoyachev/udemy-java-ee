@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: seeraj
+  Date: 6/2/17
+  Time: 7:42 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Qualifier</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:outputLabel value="Name" for="name"/>
+        <h:inputText id="name" value="#{qualifierWithValueBean.name}"/>
+
+        <h:outputLabel value="#{qualifierWithValueBean.police}"/><br/>
+
+
+        <h:commandButton value="Salute Police" >
+            <f:ajax execute="@form" listener="#{qualifierWithValueBean.policeSalutation}"
+                    render="@form"/>
+        </h:commandButton>
+
+
+      
+    </h:form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+     <h:form>
+        <h:outputLabel value="Name" for="name"/>
+        <h:inputText id="name" value="#{qualifierWithValueBean.name}"/>
+
+        <h:outputLabel value="#{qualifierWithValueBean.soldier}"/> <br/>
+
+
+          <h:commandButton value="Salute Soldier" >
+            <f:ajax execute="@form" listener="#{qualifierWithValueBean.soldierSalutation}"
+                    render="@form"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+
+</html>

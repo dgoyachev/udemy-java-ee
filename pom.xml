@@ -4,11 +4,36 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>groupId</groupId>
+    <groupId>learn.programming</groupId>
     <artifactId>java-ee</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>cdi-course</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>javax.faces-api</artifactId>
+            <version>2.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.31</version>
+        </dependency>
+    </dependencies>
 
     <build>
+        <finalName>cdi</finalName>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -34,45 +59,14 @@
                             <goal>deploy</goal>
                         </goals>
                     </execution>
-                    <!-- add driver -->
-                    <execution>
-                        <id>deploy-driver</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <groupId>com.h2database</groupId>
-                            <artifactId>h2</artifactId>
-                            <name>h2</name>
-                        </configuration>
-                        <goals>
-                            <goal>deploy-artifact</goal>
-                        </goals>
-                    </execution>
-                    <!-- add datasource -->
-                    <execution>
-                        <id>add-datasource</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <address>subsystem=datasources,data-source=java:jboss/myDs</address>
-                            <resources>
-                                <resource>
-                                    <properties>
-                                        <jndi-name>java:jboss/myDs</jndi-name>
-                                        <enabled>true</enabled>
-                                        <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
-                                        <driver-class>org.h2.Driver</driver-class>
-                                        <driver-name>h2</driver-name>
-                                        <user-name>sa</user-name>
-                                        <password>sa</password>
-                                    </properties>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
 </project>
