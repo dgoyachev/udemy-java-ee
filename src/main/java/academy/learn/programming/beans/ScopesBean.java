@@ -1,6 +1,5 @@
 package academy.learn.programming.beans;
 
-import academy.learn.programming.annotations.Logged;
 import academy.learn.programming.annotations.Web;
 import academy.learn.programming.scopes.ApplicationScope;
 import academy.learn.programming.scopes.DependentScope;
@@ -8,7 +7,6 @@ import academy.learn.programming.scopes.RequestScope;
 import academy.learn.programming.scopes.SessionScope;
 import academy.learn.programming.sessionbeans.AuditedService;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
