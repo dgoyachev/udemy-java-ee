@@ -1,5 +1,6 @@
 package academy.learn.programming.scopes;
 
+import academy.learn.programming.annotations.Logged;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +26,7 @@ public class DependentScope implements Serializable {
         logger.info("DependentScope::destroy");
     }
 
+    @Logged
     public int getHashCode() {
         System.err.println("DependentScope::hashCode");
         return this.hashCode();

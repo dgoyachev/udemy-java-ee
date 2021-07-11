@@ -1,5 +1,6 @@
 package academy.learn.programming.beans;
 
+import academy.learn.programming.annotations.Logged;
 import academy.learn.programming.annotations.Web;
 import academy.learn.programming.scopes.ApplicationScope;
 import academy.learn.programming.scopes.DependentScope;

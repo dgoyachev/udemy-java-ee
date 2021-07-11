@@ -14,6 +14,7 @@ public class AuditedService {
 
     @PostConstruct
     private void init() {
+        logger.warn("AuditedService::init annotated by @PostConstruct");
     }
 
     @Logged
