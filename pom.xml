@@ -13,82 +13,18 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
+            <version>8.0.1</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>2.1.0.Beta1</version>
-                <executions>
-                    <!-- Undeploy the application on clean -->
-                    <execution>
-                        <id>undeploy</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>undeploy</goal>
-                        </goals>
-                        <configuration>
-                            <ignoreMissingDeployment>true</ignoreMissingDeployment>
-                        </configuration>
-                    </execution>
-                    <!-- Deploy the application on install -->
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                    <!-- add driver -->
-                    <execution>
-                        <id>deploy-driver</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <groupId>com.h2database</groupId>
-                            <artifactId>h2</artifactId>
-                            <name>h2</name>
-                        </configuration>
-                        <goals>
-                            <goal>deploy-artifact</goal>
-                        </goals>
-                    </execution>
-                    <!-- add datasource -->
-                    <execution>
-                        <id>add-datasource</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <address>subsystem=datasources,data-source=java:jboss/ds</address>
-                            <resources>
-                                <resource>
-                                    <properties>
-                                        <jndi-name>java:jboss/ds</jndi-name>
-                                        <enabled>true</enabled>
-                                        <connection-url>jdbc:h2:~/Projects/udemy/java-ee/h2db;DB_CLOSE_DELAY=-1</connection-url>
-                                        <driver-class>org.h2.Driver</driver-class>
-                                        <driver-name>h2</driver-name>
-                                        <user-name>sa</user-name>
-                                        <password>sa</password>
-                                    </properties>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 

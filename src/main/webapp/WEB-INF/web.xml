@@ -22,12 +22,11 @@
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
 
-    <!--     <data-source>
-            <name>java:app/Payroll/MyDS</name>
-            <class-name>org.apache.derby.jdbc.ClientDriver</class-name>
-            <url>jdbc:derby://localhost:1527/payroll</url>
-            <user>appuser</user>
-            <password>password</password>
-        </data-source>-->
-
+    <data-source>
+        <name>java:app/Payroll/MyDS</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://127.0.0.1:3306/java_ee?useUnicode=true</url>
+        <user>morgan</user>
+        <password>hvC389inpx</password>
+    </data-source>
 </web-app>
