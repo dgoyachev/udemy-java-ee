@@ -10,6 +10,8 @@ import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.Key;
 import java.time.LocalDateTime;
@@ -20,10 +22,14 @@ public class UserRest {
 
     @Inject
     private SecurityUtil securityUtil;
+
     @Context
     private UriInfo uriInfo;
+
     @Inject
     private TodoService todoService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserRest.class);
 
     @Path("login")
     @POST
@@ -31,6 +37,7 @@ public class UserRest {
     public Response login(@NotNull @FormParam("email") String email,
                           @NotNull @FormParam("password") String password) {
 
+        logger.info("UserRest::login() email: {}, password: {}", email, password);
         //Authenticate user
         //Generate token
         //Return token in Response header to client
@@ -62,6 +69,7 @@ public class UserRest {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveUser(@NotNull User user) {
+        logger.info("UserRest::saveUser() user: {}", user);
         todoService.saveUser(user);
         return Response.ok(user).build();
     }

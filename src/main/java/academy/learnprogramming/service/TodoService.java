@@ -24,7 +24,8 @@ public class TodoService {
     private SecurityUtil securityUtil;
 
     public User saveUser(User user) {
-        Long count = ((BigInteger) queryService.countUserByEmail(user.getEmail()).get(0)).longValue();
+
+        long count = ((BigInteger) queryService.countUserByEmail(user.getEmail()).get(0)).longValue();
 
         if (user.getId() == null && count == 0) {
             Map<String, String> credMap = securityUtil.hashPassword(user.getPassword());

@@ -87,4 +87,17 @@ public class Todo extends AbstractEntity {
     public void setTodoOwner(User todoOwner) {
         this.todoOwner = todoOwner;
     }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", task='" + task + '\'' +
+                ", dueDate=" + dueDate +
+                ", isCompleted=" + isCompleted +
+                ", dateCompleted=" + dateCompleted +
+                ", dateCreated=" + dateCreated +
+                ", todoOwner=" + todoOwner +
+                '}';
+    }
 }

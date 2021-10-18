@@ -2,10 +2,15 @@ package academy.learnprogramming.service.it;
 
 import academy.learnprogramming.entity.Todo;
 import academy.learnprogramming.entity.User;
+import academy.learnprogramming.rest.TodoConfig;
 import academy.learnprogramming.service.TodoService;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
+import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
